@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7fc"><meta name="description" content="Turn educational resources into a clear syllabus and study questions.">
+  <title>Syllabus Studio — Study Pack Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top" aria-label="Syllabus Studio home"><span class="brand-mark">S</span><span>Syllabus<span class="brand-light">Studio</span></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-item active" href="#generator"><span class="nav-icon">✦</span>Study Pack Generator</a>
+      <div class="sidebar-note"><span class="note-icon">✧</span><p>Small steps every day add up to big learning.</p><span>YOUR STUDY SPACE</span></div>
+      <div class="side-foot"><span class="online-dot"></span> Ready when you are</div>
+    </aside>
+    <main class="main" id="top">
+      <header class="topbar"><div class="crumb">Workspace <span>/</span> <b>Study Pack Generator</b></div><button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Toggle theme"><span id="themeIcon">☾</span></button></header>
+      <div class="content-wrap">
+        <section class="hero"><div class="eyebrow"><span></span> YOUR PERSONAL LEARNING WORKSPACE</div><h1>Make learning feel<br class="desktop-break"> effortless<span class="period">.</span></h1><p>Turn trusted learning resources into a focused syllabus and practice questions, all in one place.</p></section>
+        <section class="panel generator-panel" id="generator">
+          <div class="panel-heading"><div class="heading-icon">✦</div><div><h2>Build your study pack</h2><p>Start with a subject and a few resources you trust.</p></div><span class="step-pill">01 <i>/ 01</i></span></div>
+          <form id="generateForm">
+            <label for="subject">What are you studying?<span class="required">*</span></label>
+            <input id="subject" name="subject" maxlength="120" placeholder="e.g. Computer Networks" required autocomplete="off">
+            <div class="label-row"><label for="urls">Add educational sources<span class="required">*</span></label><span class="field-hint">ONE URL PER LINE · UP TO 10</span></div>
+            <textarea id="urls" name="urls" rows="4" placeholder="https://example.edu/course-notes&#10;https://learning-site.org/topic" required></textarea>
+            <div class="helper"><span>ⓘ</span> Publicly accessible educational pages work best. Pages requiring JavaScript may not expose readable content.</div>
+            <div class="form-actions"><button class="button primary" id="generateButton" type="submit"><span>Generate my study pack</span><span class="button-arrow">→</span></button><button class="button quiet" id="clearButton" type="button">Clear</button></div>
+          </form>
+          <div class="loading-state" id="loadingState" hidden><span class="spinner"></span><div><b>Reading your resources</b><span id="loadingMessage">Fetching and organizing page content…</span></div></div>
+        </section>
+        <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+        <section id="results" class="results" hidden></section>
+        <section id="emptyState" class="empty-state"><div class="empty-art"><span>✦</span><i>•</i><b>✧</b></div><h3>Your next study session starts here</h3><p>Enter a subject and educational resources above to create a syllabus, check source status, and generate ten practice questions.</p></section>
+        <footer class="footer"><span>SYLLABUS STUDIO</span><span>Learning, organized.</span></footer>
+      </div>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
